@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
+import { isDarkAtom } from "../atoms";
 
 const Container = styled.div`
   padding: 0 20px;
@@ -22,7 +23,7 @@ const CoinsList = styled.ul``;
 
 const Coin = styled.li`
   background-color: white;
-  color: ${props => props.theme.bgColor};
+  color: ${props => props.theme.textColor};
   border-radius: 15px;
   margin-bottom: 10px;
   a {
@@ -79,10 +80,13 @@ function Coins() {
   }, []);
   */
   const { isLoading, data } = useQuery<CoinObject[]>("allCoins", fetchCoins);
+  const setIsDarkAtom = useSetRecoilState(isDarkAtom);
+  const toggleTheme = () => setIsDarkAtom(prev => !prev);
 
   return <Container>
     <Header>
       <Title>Top 100 Coins</Title>
+      <button onClick={toggleTheme}>Mode</button>
     </Header>
     <CoinsList>
       {isLoading ? <Loader>Fetching ...</Loader> :
