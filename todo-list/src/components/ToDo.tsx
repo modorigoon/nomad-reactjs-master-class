@@ -1,5 +1,5 @@
 import { useSetRecoilState } from "recoil";
-import { ToDoInterface, toDoState } from "../atoms";
+import { CategoryEnum, ToDoInterface, toDoState } from "../atoms";
 
 function ToDo({ text, category, id }: ToDoInterface) {
   const setToDos = useSetRecoilState(toDoState);
@@ -20,10 +20,9 @@ function ToDo({ text, category, id }: ToDoInterface) {
 
   return <li>
     <span>{text}</span>
-    {category !== "DOING" && <button name="DOING" onClick={onClick}>Doing</button>}
-    {category !== "TO_DO" && <button name="TO_DO" onClick={onClick}>To Do</button>}
-    {category !== "DONE" && <button name="DONE" onClick={onClick}> Done</button>
-    }
+    {category !== CategoryEnum.DOING && <button name={CategoryEnum.DOING} onClick={onClick}>Doing</button>}
+    {category !== CategoryEnum.TO_DO && <button name={CategoryEnum.TO_DO} onClick={onClick}>To Do</button>}
+    {category !== CategoryEnum.DONE && <button name={CategoryEnum.DONE} onClick={onClick}>Done</button>}
   </li >
 }
 

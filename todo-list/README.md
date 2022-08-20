@@ -5,6 +5,7 @@
  - Type-Script
  - Recoil (selector)
  - React Hook Form
+ - Enum
 ```
 ## Fill-in node_modules
 ```
