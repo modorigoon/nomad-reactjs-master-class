@@ -3,7 +3,7 @@
 ## Examples
 ```
  - Type-Script
- - Recoil
+ - Recoil (selector)
  - React Hook Form
 ```
 ## Fill-in node_modules
