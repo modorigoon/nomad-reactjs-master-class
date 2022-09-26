@@ -1,12 +1,12 @@
-import { atom, selector } from "recoil";
+import { atom, selector } from 'recoil';
 
 export const minuteState = atom({
-  key: "minutes",
+  key: 'minutes',
   default: 0
 });
 
 export const hoursSelector = selector<number>({
-  key: "hours",
+  key: 'hours',
   get: ({ get }) => {
     const minutes = get(minuteState);
     return minutes / 60;
