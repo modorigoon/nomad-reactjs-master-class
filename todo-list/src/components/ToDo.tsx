@@ -1,5 +1,5 @@
-import { useSetRecoilState } from "recoil";
-import { CategoryEnum, ToDoInterface, toDoState } from "../atoms";
+import { useSetRecoilState } from 'recoil';
+import { CategoryEnum, ToDoInterface, toDoState } from '../atoms';
 
 function ToDo({ text, category, id }: ToDoInterface) {
   const setToDos = useSetRecoilState(toDoState);
