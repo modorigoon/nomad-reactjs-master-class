@@ -21,7 +21,7 @@ const SubmitBtn = styled.button`
 `;
 
 function App() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const onChange = (event: React.FormEvent<HTMLInputElement>) => {
     const {
       currentTarget: { value }
@@ -29,7 +29,7 @@ function App() {
     setValue(value);
   };
 
-  const [greet, setGreet] = useState("");
+  const [greet, setGreet] = useState('');
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setGreet(`Greeting, ${value}`)
@@ -41,7 +41,13 @@ function App() {
     <Circle bgColor="tomato" text="T" />
 
     <form onSubmit={onSubmit} style={{ marginTop: 15 }}>
-      <input style={{ padding: 10, borderRadius: 20 }} value={value} onChange={onChange} type="text" placeholder="username" />
+      <input
+        style={{ padding: 10, borderRadius: 20 }}
+        value={value}
+        onChange={onChange}
+        type="text"
+        placeholder="username"
+      />
       <SubmitBtn>Log in</SubmitBtn>
     </form>
     {(greet) ? greet : null}

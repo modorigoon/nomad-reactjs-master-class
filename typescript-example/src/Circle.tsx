@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 interface ContainerProps {
   bgColor: string;
@@ -26,7 +26,7 @@ const Container = styled.div<ContainerProps>`
   border: 2px solid ${props => props.borderColor};
 `;
 
-function Circle({ bgColor, borderColor, text = "D" }: CircleProps) {
+function Circle({ bgColor, borderColor, text = 'D' }: CircleProps) {
   return <Wrapper>
     <Container bgColor={bgColor} borderColor={borderColor ?? bgColor}>
       {text}

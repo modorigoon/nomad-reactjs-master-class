@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { useQuery } from "react-query";
-import { useParams } from "react-router";
-import { useLocation, Link, Outlet, useMatch } from "react-router-dom";
-import styled from "styled-components";
-import { Helmet } from "react-helmet";
-import { fetchCoinInfo, fetchCoinTicker } from "../api";
+import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
+import { useParams } from 'react-router';
+import { useLocation, Link, Outlet, useMatch } from 'react-router-dom';
+import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
+import { fetchCoinInfo, fetchCoinTicker } from '../api';
 
 const Container = styled.div`
   padding: 0 20px;
@@ -121,31 +121,31 @@ interface PriceData {
   first_data_at: string;
   last_updated: string;
   quotes: {
-      USD: {
-          ath_date: string;
-          ath_price: number;
-          market_cap: number;
-          market_cap_change_24h: number;
-          percent_change_1h: number;
-          percent_change_1y: number;
-          percent_change_6h: number;
-          percent_change_7d: number;
-          percent_change_12h: number;
-          percent_change_15m: number;
-          percent_change_24h: number;
-          percent_change_30d: number;
-          percent_change_30m: number;
-          percent_from_price_ath: number;
-          price: number;
-          volume_24h: number;
-          volume_24h_change_24h: number;
-      }
+    USD: {
+      ath_date: string;
+      ath_price: number;
+      market_cap: number;
+      market_cap_change_24h: number;
+      percent_change_1h: number;
+      percent_change_1y: number;
+      percent_change_6h: number;
+      percent_change_7d: number;
+      percent_change_12h: number;
+      percent_change_15m: number;
+      percent_change_24h: number;
+      percent_change_30d: number;
+      percent_change_30m: number;
+      percent_from_price_ath: number;
+      price: number;
+      volume_24h: number;
+      volume_24h_change_24h: number;
+    }
   };
 };
 
 
 function Coin() {
-  
+
   //const { coinId } = useParams();
   const { coinId } = useParams() as unknown as RouteParams;
   const { state } = useLocation() as LocationState;
@@ -169,8 +169,8 @@ function Coin() {
   }, [coinId]);
   */
 
-  const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(["info", coinId], () => fetchCoinInfo(coinId));
-  const { isLoading: tickerLoading, data: tickerData } = useQuery<PriceData>(["tickers", coinId], () => fetchCoinTicker(coinId), {
+  const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(['info', coinId], () => fetchCoinInfo(coinId));
+  const { isLoading: tickerLoading, data: tickerData } = useQuery<PriceData>(['tickers', coinId], () => fetchCoinTicker(coinId), {
     refetchInterval: 5000
   });
 
@@ -178,10 +178,10 @@ function Coin() {
 
   return <Container>
     <Helmet>
-      <title>{state?.name ? state.name : loading ? "Loading..." : infoData?.name }</title>
+      <title>{state?.name ? state.name : loading ? 'Loading...' : infoData?.name}</title>
     </Helmet>
     <Header>
-      <Title>{state?.name ? state.name : loading ? "Fetching.." : infoData?.name}</Title>
+      <Title>{state?.name ? state.name : loading ? 'Fetching..' : infoData?.name}</Title>
     </Header>
     {
       loading ? (
@@ -199,7 +199,7 @@ function Coin() {
             </OverviewItem>
             <OverviewItem>
               <span>Price:</span>
-              <span>${tickerData?.quotes.USD.price.toFixed(3) }</span>
+              <span>${tickerData?.quotes.USD.price.toFixed(3)}</span>
             </OverviewItem>
           </Overview>
           <Description>{infoData?.description}</Description>

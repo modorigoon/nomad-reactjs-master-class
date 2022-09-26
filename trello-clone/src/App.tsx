@@ -1,5 +1,5 @@
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
-import styled from "styled-components";
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;
@@ -32,7 +32,7 @@ const Card = styled.div`
   background-color: ${(props) => props.theme.cardColor};
 `
 
-const toDos = ["a", "b", "c", "d", "e", "f"];
+const toDos = ['a', 'b', 'c', 'd', 'e', 'f'];
 
 
 function App() {

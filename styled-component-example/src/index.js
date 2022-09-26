@@ -6,13 +6,13 @@ import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const darkTheme = {
-  textColor: "whitesmoke",
-  backGroundColor: "#111"
+  textColor: 'whitesmoke',
+  backGroundColor: '#111'
 }
 
 const lightTheme = {
-  textColor: "#111",
-  backGroundColor: "whitesmoke"
+  textColor: '#111',
+  backGroundColor: 'whitesmoke'
 }
 
 const currentTheme = (Math.round(Math.random()) === 1) ? darkTheme : lightTheme;

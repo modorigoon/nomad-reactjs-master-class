@@ -1,8 +1,8 @@
-import React from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { CategoryEnum, categoryState, toDoSelector } from "../atoms";
-import CreateToDo from "./CreateToDo";
-import ToDo from "./ToDo";
+import React from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { CategoryEnum, categoryState, toDoSelector } from '../atoms';
+import CreateToDo from './CreateToDo';
+import ToDo from './ToDo';
 
 
 function ToDoList() {

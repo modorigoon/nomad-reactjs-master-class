@@ -1,6 +1,6 @@
-import React from "react";
-import { useRecoilState } from "recoil";
-import { hoursSelector, minuteState } from "./atoms";
+import React from 'react';
+import { useRecoilState } from 'recoil';
+import { hoursSelector, minuteState } from './atoms';
 
 
 function App() {
@@ -16,8 +16,18 @@ function App() {
   }
 
   return <div>
-    <input value={minutes} onChange={onMinutesChange} type="number" placeholder="Minutes" />
-    <input value={hours} onChange={onHoursChange} type="number" placeholder="Hours" />
+    <input
+      value={minutes}
+      onChange={onMinutesChange}
+      type="number"
+      placeholder="Minutes"
+    />
+    <input
+      value={hours}
+      onChange={onHoursChange}
+      type="number"
+      placeholder="Hours"
+    />
   </div>
 }
 

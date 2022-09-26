@@ -1,11 +1,11 @@
-import { atom, selector } from "recoil";
+import { atom, selector } from 'recoil';
 
-export type categoryType = "TO_DO" | "DOING" | "DONE"
+export type categoryType = 'TO_DO' | 'DOING' | 'DONE'
 
 export enum CategoryEnum {
-  "TO_DO" = "TO_DO",
-  "DOING" = "DOING",
-  "DONE" = "DONE"
+  'TO_DO' = 'TO_DO',
+  'DOING' = 'DOING',
+  'DONE' = 'DONE'
 }
 
 export interface ToDoInterface {
@@ -15,17 +15,17 @@ export interface ToDoInterface {
 }
 
 export const categoryState = atom<CategoryEnum>({
-  key: "category",
+  key: 'category',
   default: CategoryEnum.TO_DO
 })
 
 export const toDoState = atom<ToDoInterface[]>({
-  key: "toDo",
+  key: 'toDo',
   default: []
 });
 
 export const toDoSelector = selector({
-  key: "toDoSelector",
+  key: 'toDoSelector',
   get: ({ get }) => {
     const toDos = get(toDoState);
     const category = get(categoryState);
