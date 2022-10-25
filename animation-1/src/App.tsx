@@ -1,4 +1,5 @@
 import GesturesAnimation from './components/GesturesAnimation';
+import ScrollAnimations from './components/ScrollAnimations';
 import SimpleAnimation from './components/SimpleAnimation';
 import VariantsAnimation from './components/VariantsAnimation';
 
@@ -9,6 +10,7 @@ function App() {
       <SimpleAnimation />
       <VariantsAnimation />
       <GesturesAnimation />
+      <ScrollAnimations />
     </div>
   );
 }
