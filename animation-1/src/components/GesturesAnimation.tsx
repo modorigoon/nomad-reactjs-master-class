@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
 const Wrapper = styled.div`
   display: block;
@@ -14,8 +14,8 @@ const AnimationElements = styled.div`
 `
 
 const Box = styled(motion.div)`
-  width: 200px;
-  height: 200px;
+  width: 50px;
+  height: 50px;
   background-color: white;
   border-radius: 15px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
@@ -26,7 +26,7 @@ const boxVariants = {
     scale: 1.5, rotateZ: 90
   },
   click: {
-    scale: 1, borderRadius: '100px'
+    scale: 1, borderRadius: '20px'
   },
   drag: {
     backgroundColor: 'rgb(46, 204, 113)',
@@ -34,12 +34,14 @@ const boxVariants = {
   }
 };
 
-const Biggerbox = styled.div`
-  width: 300px;
+const Biggerbox = styled(motion.div)`
+  width: 800px;
   height: 300px;
-  background-color: yellow;
   border-radius: 40px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const Title = styled.h2`
@@ -49,13 +51,28 @@ const Title = styled.h2`
 
 function GesturesAnimation() {
   const biggerBoxRef = useRef<HTMLDivElement>(null)
+  const x = useMotionValue(0);
+  //const scale = useTransform(x, [-150, 0, 150], [2, 1, 0.1]);
+  const rotateZ = useTransform(x, [-150, 0, 150], [-360, 0, 360]);
+  const color = useTransform(x, [-150, 150], [
+    "linear-gradient(135deg, rgb(0, 210, 238), rgb(0, 83, 238))",
+    "linear-gradient(135deg, rgb(0, 238, 155), rgb(238, 178, 0))"
+  ])
+
+  useEffect(() => {
+    //scale.onChange(() => console.log(scale.get()));
+    rotateZ.onChange(() => console.log(rotateZ.get()));
+  }, [x]);
+
   return (
     <Wrapper>
       <Title>Gestures Animations</Title>
       <AnimationElements>
-        <Biggerbox ref={biggerBoxRef}>
+        <button onClick={() => x.set(100)}>Move Box!</button>
+        <Biggerbox ref={biggerBoxRef} style={{ background: color }}>
           <Box
-            drag
+            style={{ x, rotateZ }}
+            drag="x"
             dragSnapToOrigin
             dragElastic={0}
             dragConstraints={biggerBoxRef}
